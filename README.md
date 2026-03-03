@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Edward Tran Website
+A personal website used as my portfolio and blog using NextJS. More tools and features will be added over time.
+
+## About Me
+Hi, I'm Edward — a backend engineer who loves Neovim and AI tooling.
+
+## Tech Stack
+- NextJS
+- ShadCN UI
+- Tailwindcss
+
+## Features
+
+- Admin dashboard
+- Authenticator (Login page)
+- Full text search
+- Analytic intergration
+
+## Project Structure
+
+```
+.
+├── app
+│   ├── (admin)
+│   │   └── dashboard
+│   │       ├── blog
+│   │       ├── layout.tsx
+│   │       ├── page.tsx
+│   │       └── projects
+│   ├── (auth)
+│   │   └── login
+│   │       ├── layout.tsx
+│   │       └── page.tsx
+│   ├── (public)
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   └── layout.tsx
+├── components
+│   ├── admin
+│   │   ├── app-breadcrumb.tsx
+│   │   ├── app-header.tsx
+│   │   ├── app-sidebar.tsx
+│   │   ├── nav-main.tsx
+│   │   └── new-article-form.tsx
+│   ├── auth
+│   │   └── login-form.tsx
+│   └── ui
+│       ├── breadcrumb.tsx
+│       ├── button-group.tsx
+│       ├── button.tsx
+│       ├── collapsible.tsx
+│       ├── field.tsx
+│       ├── input.tsx
+│       ├── item.tsx
+│       ├── label.tsx
+│       ├── separator.tsx
+│       ├── sheet.tsx
+│       ├── sidebar.tsx
+│       ├── skeleton.tsx
+│       ├── tooltip.tsx
+│       └── typography.tsx
+├── components.json
+├── constants
+│   └── navigation.tsx
+├── eslint.config.mjs
+├── features
+│   ├── articles
+│   │   ├── components
+│   │   │   ├── admin
+│   │   │   └── public
+│   │   ├── contexts
+│   │   └── types
+│   │       └── article.ts
+│   ├── comments
+│   └── projects
+├── hooks
+│   ├── test.ts
+│   ├── use-debounce.ts
+│   ├── use-mobile.ts
+│   └── use-mounted.ts
+├── lib
+│   └── utils.ts
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── imgs
+│   │   └── authorize-page-bg.png
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── README.md
+├── tsconfig.json
+├── types
+│   ├── breadcrumb.ts
+│   └── navigation.ts
+└── yarn.lock
+```
 
 ## Getting Started
 
-First, run the development server:
+```
+### 1. Clone repository
+git clone https://github.com/edwardtran1561/edward-tran-website.git
 
-```bash
-npm run dev
-# or
+cd edward-tran-website
+
+### 2. Install dependencies
+yarn install
+
+### 3. Run development server
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
