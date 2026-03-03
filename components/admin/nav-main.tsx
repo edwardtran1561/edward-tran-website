@@ -17,24 +17,48 @@ import {
 import type NavigationItemProps from "@/types/navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const MainNavigation: React.FC<{ items: NavigationItemProps[] }> = ({
   items,
 }) => {
+  const pathname = usePathname();
+
+  const markActive = (items: NavigationItemProps[]): NavigationItemProps[] => {
+    return items.map((item) => {
+      const isCurrent = item.url === pathname;
+
+      let childrenItems: NavigationItemProps[] = [];
+
+      if (item.items && item.items.length > 0) {
+        childrenItems = markActive(item.items);
+      }
+
+      return {
+        ...item,
+        items: childrenItems,
+        isActive: isCurrent,
+      };
+    });
+  };
+
   return (
     <SidebarGroup>
       {items.length && <SidebarGroupLabel>Explore</SidebarGroupLabel>}
       <SidebarMenu>
-        {(items || []).map((item) => (
+        {(markActive(items) || []).map((item) => (
           <Collapsible
             asChild
-            defaultOpen={item.isActive}
+            defaultOpen={item.items.some((item) => item.isActive)}
             className="group/collapsible"
             key={item.title}
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
+                <SidebarMenuButton
+                  isActive={item.isActive}
+                  tooltip={item.title}
+                >
                   {(() => {
                     if (item.items.length > 0) {
                       return (
@@ -64,7 +88,10 @@ const MainNavigation: React.FC<{ items: NavigationItemProps[] }> = ({
                   <SidebarMenuSub>
                     {item.items?.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
-                        <SidebarMenuSubButton asChild>
+                        <SidebarMenuSubButton
+                          isActive={subItem.isActive}
+                          asChild
+                        >
                           <Link href={subItem.url}>
                             <span className="flex gap-2 flex-row items-center">
                               {subItem.icon && <subItem.icon size="16" />}
